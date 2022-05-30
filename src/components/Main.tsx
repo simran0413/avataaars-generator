@@ -133,13 +133,13 @@ export class Main extends React.Component<Props, State> {
         <AvatarForm
           optionContext={this.optionContext}
           avatarStyle={avatarStyle}
-          displayingCode={displayComponentCode}
-          displayingImg={displayComponentImg}
+          // displayingCode={displayComponentCode}
+          // displayingImg={displayComponentImg}
           onDownloadPNG={this.onDownloadPNG}
-          onDownloadSVG={this.onDownloadSVG}
+          // onDownloadSVG={this.onDownloadSVG}
           onAvatarStyleChange={this.onAvatarStyleChange}
-          onToggleCode={this.onToggleCode}
-          onToggleImg={this.onToggleImg}
+        // onToggleCode={this.onToggleCode}
+        // onToggleImg={this.onToggleImg}
         />
         {displayComponentImg ? (
           <ComponentImg avatarStyle={avatarStyle} />
@@ -234,32 +234,32 @@ export class Main extends React.Component<Props, State> {
     img.src = url
   }
 
-  private onDownloadSVG = () => {
-    const svgNode = ReactDOM.findDOMNode(this.avatarRef!)! as Element
-    const data = svgNode.outerHTML
-    const svg = new Blob([data], { type: 'image/svg+xml' })
-    this.triggerDownload(svg, 'avataaars.svg')
-  }
+  // private onDownloadSVG = () => {
+  //   const svgNode = ReactDOM.findDOMNode(this.avatarRef!)! as Element
+  //   const data = svgNode.outerHTML
+  //   const svg = new Blob([data], { type: 'image/svg+xml' })
+  //   this.triggerDownload(svg, 'avataaars.svg')
+  // }
 
   private triggerDownload(imageBlob: Blob, fileName: string) {
     FileSaver.saveAs(imageBlob, fileName)
   }
 
-  private onToggleCode = () => {
-    this.setState((state) => ({
-      ...state,
-      displayComponentCode: !state.displayComponentCode,
-      displayComponentImg: false,
-    }))
-  }
+  // private onToggleCode = () => {
+  //   this.setState((state) => ({
+  //     ...state,
+  //     displayComponentCode: !state.displayComponentCode,
+  //     displayComponentImg: false,
+  //   }))
+  // }
 
-  private onToggleImg = () => {
-    this.setState((state) => ({
-      ...state,
-      displayComponentImg: !state.displayComponentImg,
-      displayComponentCode: false,
-    }))
-  }
+  // private onToggleImg = () => {
+  //   this.setState((state) => ({
+  //     ...state,
+  //     displayComponentImg: !state.displayComponentImg,
+  //     displayComponentCode: false,
+  //   }))
+  // }
 }
 
 export default addUrlProps({ urlPropsQueryConfig })(Main)

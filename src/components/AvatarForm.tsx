@@ -17,15 +17,15 @@ interface SelectProps {
 }
 
 // ref: https://stackoverflow.com/a/1714899/25077
-const serializeQuery = function (obj: any) {
-  const str = []
-  for (const p in obj) {
-    if (obj.hasOwnProperty(p)) {
-      str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
-    }
-  }
-  return str.join('&')
-}
+// const serializeQuery = function (obj: any) {
+//   const str = []
+//   for (const p in obj) {
+//     if (obj.hasOwnProperty(p)) {
+//       str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
+//     }
+//   }
+//   return str.join('&')
+// }
 
 class OptionSelect extends React.Component<SelectProps> {
   render() {
@@ -54,13 +54,13 @@ class OptionSelect extends React.Component<SelectProps> {
 export interface Props {
   avatarStyle: AvatarStyle
   optionContext: OptionContext
-  displayingCode: boolean
-  displayingImg: boolean
+  // displayingCode: boolean
+  // displayingImg: boolean
   onDownloadPNG?: () => void
-  onDownloadSVG?: () => void
+  // onDownloadSVG?: () => void
   onAvatarStyleChange?: (avatarStyle: AvatarStyle) => void
-  onToggleCode?: () => void
-  onToggleImg?: () => void
+  // onToggleCode?: () => void
+  // onToggleImg?: () => void
 }
 
 export default class AvatarForm extends React.Component<Props> {
@@ -77,7 +77,8 @@ export default class AvatarForm extends React.Component<Props> {
   }
 
   render() {
-    const { optionContext, avatarStyle, displayingImg, displayingCode } =
+    // const { optionContext, avatarStyle, displayingImg, displayingCode } =
+    const { optionContext, avatarStyle } =
       this.props
     const selects = optionContext.options.map((option, index) => {
       const optionState = optionContext.getOptionState(option.key)!
@@ -153,29 +154,29 @@ export default class AvatarForm extends React.Component<Props> {
               variant='primary'
               type='submit'
               onClick={this.onDownloadPNG}>
-              <i className='fa fa-download' /> PNG
+              <i className='fa fa-download' /> Save
             </Button>{' '}
-            <Button
+            {/* <Button
               variant='secondary'
               type='submit'
               onClick={this.onDownloadSVG}>
               <i className='fa fa-download' /> SVG
-            </Button>{' '}
-            <Button
+            </Button>{' '} */}
+            {/* <Button
               variant='secondary'
               type='submit'
               onClick={this.onToggleCode}>
               <i className='fa fa-code' />{' '}
               {displayingCode ? 'Hide React' : 'Show React'}
-            </Button>{' '}
-            <Button
+            </Button>{' '} */}
+            {/* <Button
               variant='secondary'
               type='submit'
               onClick={this.onToggleImg}>
               <i className='fa fa-code' />{' '}
               {displayingImg ? 'Hide <img>' : 'Show <img>'}
-            </Button>
-            <div style={{ marginTop: '10px' }}>
+            </Button> */}
+            {/* <div style={{ marginTop: '10px' }}>
               <iframe
                 src={
                   'https://platform.twitter.com/widgets/tweet_button.html?' +
@@ -192,7 +193,7 @@ export default class AvatarForm extends React.Component<Props> {
                 title='Twitter Tweet Button'
                 style={{ border: 0, overflow: 'hidden' }}
               />
-            </div>
+            </div> */}
           </Col>
         </FormGroup>
       </Form>
@@ -217,24 +218,24 @@ export default class AvatarForm extends React.Component<Props> {
     }
   }
 
-  private onDownloadSVG = (event: React.FormEvent<typeof FormControl>) => {
-    event.preventDefault()
-    if (this.props.onDownloadSVG) {
-      this.props.onDownloadSVG()
-    }
-  }
+  // private onDownloadSVG = (event: React.FormEvent<typeof FormControl>) => {
+  //   event.preventDefault()
+  //   if (this.props.onDownloadSVG) {
+  //     this.props.onDownloadSVG()
+  //   }
+  // }
 
-  private onToggleCode = (event: React.FormEvent<typeof FormControl>) => {
-    event.preventDefault()
-    if (this.props.onToggleCode) {
-      this.props.onToggleCode()
-    }
-  }
+  // private onToggleCode = (event: React.FormEvent<typeof FormControl>) => {
+  //   event.preventDefault()
+  //   if (this.props.onToggleCode) {
+  //     this.props.onToggleCode()
+  //   }
+  // }
 
-  private onToggleImg = (event: React.FormEvent<typeof FormControl>) => {
-    event.preventDefault()
-    if (this.props.onToggleImg) {
-      this.props.onToggleImg()
-    }
-  }
+  // private onToggleImg = (event: React.FormEvent<typeof FormControl>) => {
+  //   event.preventDefault()
+  //   if (this.props.onToggleImg) {
+  //     this.props.onToggleImg()
+  //   }
+  // }
 }
