@@ -1,6 +1,7 @@
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
-import { AvatarStyle, OptionContext, allOptions } from 'avataaars'
+import { AvatarStyle, OptionContext, FacialHairOption, FacialHairColor, SkinOption, HairColorOption } from 'avataaars'
+// import { AvatarStyle, OptionContext, allOptions } from 'avataaars'
 
 export interface Props {
   avatarStyle: AvatarStyle
@@ -29,7 +30,8 @@ export default class ComponentCode extends React.Component<Props> {
     const { avatarStyle } = this.props
     const { optionContext } = this
     const props: Array<string> = []
-    for (const option of allOptions) {
+    const options = [HairColorOption, FacialHairColor, FacialHairOption, SkinOption]
+    for (const option of options) {
       const state = optionContext.getOptionState(option.key)
       if (!state || !state.available) {
         continue
