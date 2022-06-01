@@ -4,8 +4,8 @@ import * as FileSaver from 'file-saver'
 import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-// import { Avatar, AvatarStyle, OptionContext, allOptions } from 'avataaars'
-import { Avatar, AvatarStyle, OptionContext, HairColorOption, FacialHairColor, FacialHairOption, SkinOption } from 'avataaars'
+import { Avatar, AvatarStyle, OptionContext, allOptions } from 'avataaars'
+// import { Avatar, AvatarStyle, OptionContext, HairColorOption, FacialHairColor, FacialHairOption, SkinOption } from 'avataaars'
 import { Button } from 'react-bootstrap'
 import { Helmet } from 'react-helmet'
 import {
@@ -26,12 +26,26 @@ interface Props {
   onChangeAvatarStyle: (avatarStyle: AvatarStyle) => void
 }
 
-const options = [HairColorOption, FacialHairColor, FacialHairOption, SkinOption]
+// const options = new Array(HairColorOption, FacialHairColor, FacialHairOption, SkinOption)
 const updateType = UrlUpdateTypes.pushIn
+// document.write(options)
+// for (const o in options) {
+//   document.write(o)
+// }
+// document.write(SkinOption.key)
+// if (SkinOption.key !== undefined) {
+//   document.write("undefined")
+// }
+// else {
+//   document.write("not undefined")
+// }
+// if (SkinOption.key !== undefined) {
+// console.log(SkinOption.key)
+// }
 const urlPropsQueryConfig = {
   ...fromPairs(
-    options.map((option) => [
-      // allOptions.map((option) => [
+    // options.map((option) => [
+    allOptions.map((option) => [
       option.key,
       {
         type: UrlQueryParamTypes.string,
@@ -69,8 +83,8 @@ export class Main extends React.Component<Props, State> {
 
   private avatarRef: Avatar | null = null
   private canvasRef: HTMLCanvasElement | null = null
-  private optionContext: OptionContext = new OptionContext(options)
-  // private optionContext: OptionContext = new OptionContext(allOptions)
+  // private optionContext: OptionContext = new OptionContext(options)
+  private optionContext: OptionContext = new OptionContext(allOptions)
 
   getChildContext() {
     return { optionContext: this.optionContext }

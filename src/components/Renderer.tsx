@@ -20,6 +20,8 @@ interface Props {
 
 const options = [HairColorOption, FacialHairColor, FacialHairOption, SkinOption]
 const updateType = UrlUpdateTypes.pushIn
+// console.log(options)
+// console.log(HairColorOption.key)
 const urlPropsQueryConfig = {
   ...fromPairs(
     options.map((option) => [
